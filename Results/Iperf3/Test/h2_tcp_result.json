@@ -1,0 +1,11 @@
+{
+	"start":	{
+		"connected":	[],
+		"version":	"iperf 3.7",
+		"system_info":	"Linux ubuntu 5.4.0-29-generic #33-Ubuntu SMP Wed Apr 29 14:32:27 UTC 2020 x86_64"
+	},
+	"intervals":	[],
+	"end":	{
+	},
+	"error":	"error - unable to receive control message: Connection reset by peer"
+}

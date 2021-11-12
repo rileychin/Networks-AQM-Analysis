@@ -2,6 +2,10 @@
 
 For 50.012 Networks 2021 project about AQM analysis
 
+# Note
+1. topo.py is for python 3.8.0 above
+2. topo_2.py is for python < 3.8.0 
+
 # Requirements
 1. Linux VM 
 2. ```mininet``` version 2.3.0, install via http://mininet.org/download/

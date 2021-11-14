@@ -13,7 +13,7 @@ For 50.012 Networks 2021 project about AQM analysis
 4. iperf3
 
 # How to run
-1. ```python topo.py```
+1. ```sudo python topo.py```
 2. Evaluations will be placed n json file
 3. if want to run manually
 4. xterm hn, where n is the host number

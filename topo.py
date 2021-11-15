@@ -34,7 +34,7 @@ class RTopo(Topo):
         h1 = self.addHost( 'h1', ip='10.0.1.10/24', defaultRoute='via 10.0.1.1' ) # Smartphone
         h2 = self.addHost( 'h2', ip='10.0.2.11/24', defaultRoute='via 10.0.2.1' ) # Door alarm
         h3 = self.addHost( 'h3', ip='10.0.3.12/24', defaultRoute='via 10.0.3.1' ) # Health monitoring device
-        h4= self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
+        h4 = self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
         h5 = self.addHost( 'h5', ip='10.0.5.10/24', defaultRoute='via 10.0.5.1' ) # Smart Tv
         h6 = self.addHost( 'h6', ip='10.0.6.10/24', defaultRoute='via 10.0.6.1' ) # Internet
 
@@ -86,7 +86,7 @@ def main():
     r.cmd('ifconfig r-eth3 10.0.3.1/24')
     r.cmd('ifconfig r-eth4 10.0.4.1/24')
     r.cmd('ifconfig r-eth5 10.0.5.1/24')
-    r.cmd('ifconfig r-eth5 10.0.6.1/24')
+    r.cmd('ifconfig r-eth6 10.0.6.1/24')
     r.cmd('sysctl net.ipv4.ip_forward=1')
 
     # Declare host in topology
@@ -127,8 +127,8 @@ def main():
     threads = []
     for h in range(1,6):
         port = f'520{h-1}'
-        #threads.append(multiprocessing.Process(target=algorithm.udpConnect(), args=(access_list[h-1], port, "10.0.6.10", "1000g")))
-        threads.append(multiprocessing.Process(target=algorithm.tcpConnect(), args=(access_list[h-1], port, "10.0.6.10", "1g")))
+        #threads.append(multiprocessing.Process(target=algorithm.udpConnect, args=(access_list[h-1], port, "10.0.6.10", "1000g")))
+        threads.append(multiprocessing.Process(target=algorithm.tcpConnect, args=(access_list[h-1], port, "10.0.6.10", "1g")))
 
     for i in threads:
         i.start()

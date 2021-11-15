@@ -1,10 +1,13 @@
 from .sfb import SFB
+from .ets import ETS
 
 class Algorithms:
     def __init__(self, name):
         try:
             if name == "sfb":
                 self.algor = SFB()
+            elif name == "ets":
+                self.algor = ETS()
         except:
             print("Algorithm not implemented")
 

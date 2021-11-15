@@ -8,7 +8,9 @@ from mininet.link import TCLink
 from mininet.topo import Topo
 from mininet.log import setLogLevel, info
 from algorithms.algorithms import Algorithms
+
 import multiprocessing
+import sys
 
 
 class LinuxRouter( Node ):
@@ -120,7 +122,7 @@ def main():
     ## Classful AQM
     # Define Q discipline from linux tc (traffic control).
     # Experiment between whatever we send in the chat
-    algorithm = Algorithms("sfb")
+    algorithm = Algorithms(sys.argv[1])
     algorithm.router_command(r, "r-eth6")
     ##==============================================================================
     ## Ensure the hosts run iperf run on the same time

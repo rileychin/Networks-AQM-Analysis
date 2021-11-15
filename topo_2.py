@@ -8,7 +8,9 @@ from mininet.link import TCLink
 from mininet.topo import Topo
 from mininet.log import setLogLevel, info
 from algorithms.algorithms_2 import Algorithms
+
 import multiprocessing
+import sys
 
 
 class LinuxRouter( Node ):
@@ -34,7 +36,7 @@ class RTopo(Topo):
         h1 = self.addHost( 'h1', ip='10.0.1.10/24', defaultRoute='via 10.0.1.1' ) # Smartphone
         h2 = self.addHost( 'h2', ip='10.0.2.11/24', defaultRoute='via 10.0.2.1' ) # Door alarm
         h3 = self.addHost( 'h3', ip='10.0.3.12/24', defaultRoute='via 10.0.3.1' ) # Health monitoring device
-        h4= self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
+        h4 = self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
         h5 = self.addHost( 'h5', ip='10.0.5.10/24', defaultRoute='via 10.0.5.1' ) # Smart Tv
         h6 = self.addHost( 'h6', ip='10.0.6.10/24', defaultRoute='via 10.0.6.1' ) # Internet
 
@@ -120,7 +122,7 @@ def main():
     ## Classful AQM
     # Define Q discipline from linux tc (traffic control).
     # Experiment between whatever we send in the chat
-    algorithm = Algorithms("sfb")
+    algorithm = Algorithms(sys.argv[1])
     algorithm.router_command(r, "r-eth6")
     ##==============================================================================
     ## Ensure the hosts run iperf run on the same time

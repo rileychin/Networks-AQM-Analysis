@@ -22,7 +22,7 @@ For 50.012 Networks 2021 project about AQM analysis
 7. run ```iperf3 -c 10.0.x.10 -u -b 1000g -p 520x ``` where x is the host + 1 number
 
 # Completed
-1. Simulated topology (nodes h1-h5, router r)
+1. Simulated topology (nodes h1-h6, router r)
 
 # TODO
 1. Measure performance for diff algos (can also be the ones we never research about)

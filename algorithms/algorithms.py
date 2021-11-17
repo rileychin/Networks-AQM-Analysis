@@ -1,5 +1,6 @@
 from .sfb import SFB
 from .ets import ETS
+from .red import RED
 
 class Algorithms:
     def __init__(self, name):
@@ -8,6 +9,8 @@ class Algorithms:
                 self.algor = SFB()
             elif name == "ets":
                 self.algor = ETS()
+            elif name == "red":
+                self.algor = RED()
         except:
             print("Algorithm not implemented")
 

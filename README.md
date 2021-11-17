@@ -32,7 +32,9 @@ h4 ------------------ r
 
         10.0.5.0
 h5 ------------------ r
-    h5-eth     r-eth5
+    h5-eth     r-eth5 
+    
+...
 
 # How to run
 1. ```sudo python topo.py z``` where z is the algorithm to use for the test. Eg. sfb/ets

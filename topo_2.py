@@ -88,7 +88,7 @@ def main():
     r.cmd('ifconfig r-eth3 10.0.3.1/24')
     r.cmd('ifconfig r-eth4 10.0.4.1/24')
     r.cmd('ifconfig r-eth5 10.0.5.1/24')
-    r.cmd('ifconfig r-eth5 10.0.6.1/24')
+    r.cmd('ifconfig r-eth6 10.0.6.1/24')
     r.cmd('sysctl net.ipv4.ip_forward=1')
 
     # Declare host in topology

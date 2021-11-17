@@ -7,7 +7,10 @@ from mininet.cli import CLI
 from mininet.link import TCLink
 from mininet.topo import Topo
 from mininet.log import setLogLevel, info
+from algorithms.algorithms import Algorithms
+
 import multiprocessing
+import sys
 
 
 class LinuxRouter( Node ):
@@ -33,7 +36,7 @@ class RTopo(Topo):
         h1 = self.addHost( 'h1', ip='10.0.1.10/24', defaultRoute='via 10.0.1.1' ) # Smartphone
         h2 = self.addHost( 'h2', ip='10.0.2.11/24', defaultRoute='via 10.0.2.1' ) # Door alarm
         h3 = self.addHost( 'h3', ip='10.0.3.12/24', defaultRoute='via 10.0.3.1' ) # Health monitoring device
-        h4= self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
+        h4 = self.addHost( 'h4', ip='10.0.4.13/24', defaultRoute='via 10.0.4.1' ) # Smart coffee maker
         h5 = self.addHost( 'h5', ip='10.0.5.10/24', defaultRoute='via 10.0.5.1' ) # Smart Tv
         h6 = self.addHost( 'h6', ip='10.0.6.10/24', defaultRoute='via 10.0.6.1' ) # Internet
 
@@ -85,7 +88,7 @@ def main():
     r.cmd('ifconfig r-eth3 10.0.3.1/24')
     r.cmd('ifconfig r-eth4 10.0.4.1/24')
     r.cmd('ifconfig r-eth5 10.0.5.1/24')
-    r.cmd('ifconfig r-eth5 10.0.6.1/24')
+    r.cmd('ifconfig r-eth6 10.0.6.1/24')
     r.cmd('sysctl net.ipv4.ip_forward=1')
 
     # Declare host in topology
@@ -108,6 +111,7 @@ def main():
     h6.popen('iperf3 -s -p 5201')
     h6.popen('iperf3 -s -p 5202')
     h6.popen('iperf3 -s -p 5203')
+    h6.popen('iperf3 -s -p 5204')
 
     ##==============================================================================
     ## Classless AQM
@@ -118,18 +122,15 @@ def main():
     ## Classful AQM
     # Define Q discipline from linux tc (traffic control).
     # Experiment between whatever we send in the chat
-    r.cmd('tc qdisc del dev r-eth6 root')
-    r.cmd('tc qdisc add dev r-eth6 root handle 1: htb default 10')
-    r.cmd('tc class add dev r-eth6 parent 1: classid 1:1 htb rate 10mbit')
-    r.cmd('tc class add dev r-eth6 parent 1: classid 1:2 htb rate 100mbit')
-    r.cmd('iptables --append FORWARD --table mangle --protocol tcp --dport 5200 --jump MARK --set-mark 2')
-    r.cmd('tc filter add dev r-eth6 parent 1:1 protocol ip handle 2 fw classid 1:2')
+    algorithm = Algorithms(sys.argv[1])
+    algorithm.router_command(r, "r-eth6")
     ##==============================================================================
     ## Ensure the hosts run iperf run on the same time
     threads = []
-    for h in range(1,5):
-        threads.append(multiprocessing.Process(target=udpConnect, args=(access_list[h-1], h)))
-        threads.append(multiprocessing.Process(target=tcpConnect, args=(access_list[h-1], h)))
+    for h in range(1,6):
+        port = f'520{h-1}'
+        #threads.append(multiprocessing.Process(target=algorithm.udpConnect, args=(access_list[h-1], port, "10.0.6.10", "1000g")))
+        threads.append(multiprocessing.Process(target=algorithm.tcpConnect, args=(access_list[h-1], port, "10.0.6.10", "1g")))
 
     for i in threads:
         i.start()

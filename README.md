@@ -47,7 +47,7 @@ h5 ------------------ r
 
 # Completed
 1. Simulated topology (nodes h1-h6, router r)
-2a. RED, SFB, HTB, ETS
+2. SFB,RED,ETS,CODEL, ~FQ_CODEL~, ~HTB~
 
 # TODO
 1. Measure performance for diff algos (can also be the ones we never research about)

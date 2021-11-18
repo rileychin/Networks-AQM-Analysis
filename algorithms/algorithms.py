@@ -1,13 +1,10 @@
 from .sfb import SFB
-from .fq_codel import FQ_CODEL
 
 class Algorithms:
     def __init__(self, name):
         try:
             if name == "sfb":
                 self.algor = SFB()
-            elif name == "fq_codel":
-                self.algor = FQ_CODEL()
         except:
             print("Algorithm not implemented")
 

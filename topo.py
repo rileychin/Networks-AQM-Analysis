@@ -120,15 +120,15 @@ def main():
     ## Classful AQM
     # Define Q discipline from linux tc (traffic control).
     # Experiment between whatever we send in the chat
-    algorithm = Algorithms("sfb")
+    algorithm = Algorithms("fq_codel")
     algorithm.router_command(r, "r-eth6")
     ##==============================================================================
     ## Ensure the hosts run iperf run on the same time
     threads = []
     for h in range(1,6):
         port = f'520{h-1}'
-        #threads.append(multiprocessing.Process(target=algorithm.udpConnect, args=(access_list[h-1], port, "10.0.6.10", "1000g")))
-        threads.append(multiprocessing.Process(target=algorithm.tcpConnect, args=(access_list[h-1], port, "10.0.6.10", "1g")))
+        threads.append(multiprocessing.Process(target=algorithm.udpConnect, args=(access_list[h-1], port, "10.0.6.10", "1000g")))
+        #threads.append(multiprocessing.Process(target=algorithm.tcpConnect, args=(access_list[h-1], port, "10.0.6.10", "1000g")))
 
     for i in threads:
         i.start()

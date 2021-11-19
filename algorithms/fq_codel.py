@@ -5,6 +5,7 @@ class FQ_CODEL:
         self.filename = "fq_codel"
 
     def router_command(self, router, interface):
+    	# tc qdisc ... fq_codel [ limit PACKETS ] [ flows NUMBER ] [ target TIME ] [ interval TIME ] [ quantum BYTES ] [ ecn | noecn ] [ ce_threshold TIME ] [ memory_limit BYTES ]
         router.cmd(f'tc qdisc del dev {interface} root')
         router.cmd(f'tc qdisc add dev {interface} root fq_codel')
 

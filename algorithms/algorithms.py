@@ -1,6 +1,7 @@
 from .sfb import SFB
 from .ets import ETS
 from .red import RED
+from .htb import HTB
 from .codel import CODEL
 
 class Algorithms:
@@ -14,6 +15,8 @@ class Algorithms:
                 self.algor = RED()
             elif name == "codel":
                 self.algor = CODEL()
+            elif name == 'htb':
+                self.algor = HTB()
         except:
             print("Algorithm not implemented")
 

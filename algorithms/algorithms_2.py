@@ -1,10 +1,19 @@
 from .sfb_2 import SFB
+from .ets_2 import ETS
+from .red_2 import RED
+from .codel_2 import CODEL
 
 class Algorithms:
     def __init__(self, name):
         try:
             if name == "sfb":
                 self.algor = SFB()
+            elif name == "ets":
+                self.algor = ETS()
+            elif name == "red":
+                self.algor = RED()
+            elif name == "codel":
+                self.algor = CODEL()
         except:
             print("Algorithm not implemented")
 

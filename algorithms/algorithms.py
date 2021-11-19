@@ -1,4 +1,5 @@
 from .sfb import SFB
+from .fq_codel import FQ_CODEL
 from .ets import ETS
 from .red import RED
 from .htb import HTB
@@ -9,6 +10,8 @@ class Algorithms:
         try:
             if name == "sfb":
                 self.algor = SFB()
+            elif name == "fq_codel":
+                self.algor = FQ_CODEL()
             elif name == "ets":
                 self.algor = ETS()
             elif name == "red":

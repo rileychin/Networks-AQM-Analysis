@@ -1,6 +1,8 @@
 from .sfb import SFB
+from .fq_codel import FQ_CODEL
 from .ets import ETS
 from .red import RED
+from .htb import HTB
 from .codel import CODEL
 
 class Algorithms:
@@ -8,12 +10,16 @@ class Algorithms:
         try:
             if name == "sfb":
                 self.algor = SFB()
+            elif name == "fq_codel":
+                self.algor = FQ_CODEL()
             elif name == "ets":
                 self.algor = ETS()
             elif name == "red":
                 self.algor = RED()
             elif name == "codel":
                 self.algor = CODEL()
+            elif name == 'htb':
+                self.algor = HTB()
         except:
             print("Algorithm not implemented")
 

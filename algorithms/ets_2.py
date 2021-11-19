@@ -6,7 +6,10 @@ class ETS:
 
     def router_command(self, router, interface):
         router.cmd('tc qdisc del dev %s root' % interface)
-        router.cmd('tc qdisc add dev %s root ets' % interface)
+        #router.cmd('tc qdisc add dev %s root ets' % interface)
+        
+        #router.cmd('tc qdisc add dev %s root handle 1: ets bands 5 priomap 4 3 2 1 0' % interface)
+        router.cmd('tc qdisc add dev %s root handle 1: ets strict 5 priomap 4 3 2 1 0' % interface)
 
     def getFileDirectory(self, hostname, protocol):
         directory = './Results/%s' % self.filename

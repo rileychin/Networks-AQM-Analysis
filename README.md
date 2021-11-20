@@ -24,7 +24,7 @@ h2 ------------------ r (Door Alarm)
 
         10.0.3.0                                 10.0.6.0
 h3 ------------------ r (Smart Phone) ||r --------------------- h6 (Internet)
-    h3-eth     r-eth3       r-eth6         h6-eth
+    h3-eth     r-eth3                     r-eth6         h6-eth
 
         10.0.4.0
 h4 ------------------ r (Smart Coffee Maker)

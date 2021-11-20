@@ -6,7 +6,7 @@ class RED:
 
     def router_command(self, router, interface):
         router.cmd(f'tc qdisc del dev {interface} root')
-        router.cmd(f'tc qdisc add dev {interface} root red')
+        router.cmd(f'tc qdisc add dev {interface} root red bandwidth 100Mbit limit 25000 avpkt 1000 ')
 
     def getFileDirectory(self, hostname, protocol):
         directory = f'./Results/{self.filename}'

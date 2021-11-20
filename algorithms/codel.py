@@ -6,7 +6,7 @@ class CODEL:
 
     def router_command(self, router, interface):
         router.cmd(f'tc qdisc del dev {interface} root')
-        router.cmd(f'tc qdisc add dev {interface} root codel')
+        router.cmd(f'tc qdisc add dev {interface} root codel limit 1000 noecn')
 
     def getFileDirectory(self, hostname, protocol):
         directory = f'./Results/{self.filename}'

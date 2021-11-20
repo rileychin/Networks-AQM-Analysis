@@ -15,23 +15,23 @@ For 50.012 Networks 2021 project about AQM analysis
 # Topo
 ```
         10.0.1.0
-h1 ------------------ r
+h1 ------------------ r (Health Monitoring)
     h1-eth     r-eth1
 
         10.0.2.0
-h2 ------------------ r
+h2 ------------------ r (Door Alarm)
     h2-eth     r-eth2
 
-        10.0.3.0                  10.0.6.0
-h3 ------------------ r||r --------------------- h6
+        10.0.3.0                                 10.0.6.0
+h3 ------------------ r (Smart Phone) ||r --------------------- h6 (Internet)
     h3-eth     r-eth3       r-eth6         h6-eth
 
         10.0.4.0
-h4 ------------------ r
+h4 ------------------ r (Smart Coffee Maker)
     h4-eth     r-eth4
 
         10.0.5.0
-h5 ------------------ r
+h5 ------------------ r (Smart TV)
     h5-eth     r-eth5 
     
 ```

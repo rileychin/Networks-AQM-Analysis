@@ -4,9 +4,10 @@ from .ets import ETS
 from .red import RED
 from .htb import HTB
 from .codel import CODEL
+from .cbq import CBQ
 
 class Algorithms:
-    def __init__(self, name):
+    def __init__(self, name, subAlgor='pfifo'):
         try:
             if name == "sfb":
                 self.algor = SFB()
@@ -20,6 +21,9 @@ class Algorithms:
                 self.algor = CODEL()
             elif name == 'htb':
                 self.algor = HTB()
+            elif name == 'cbq':
+                print(f"Current subalgor is {subAlgor}")
+                self.algor = CBQ(subAlgor)
         except:
             print("Algorithm not implemented")
 

@@ -9,18 +9,20 @@ class FQ_CODEL:
         router.cmd(f'tc qdisc del dev {interface} root')
         router.cmd(f'tc qdisc add dev {interface} root fq_codel limit 1000 quantum 300 noecn')
 
-    def getFileDirectory(self, hostname, protocol):
+    def getFileDirectory(self, hostname, protocol, multi):
         directory = f'./Results/{self.filename}'
+        if multi:
+            directory = f'./Results/multi/{self.filename}'
         if not os.path.exists(directory):
             os.makedirs(directory)
-        return f"{directory}/{protocol}_{hostname}.json"
+        return f"{directory}/diff_7_{protocol}_{hostname}.json"
 
     def udpConnect(self, host, port, target, size):
         fileDirectory = self.getFileDirectory(host, "udp")
         host.cmd(f'iperf3 -c {target} -u -b {size} -p {port} -J > {fileDirectory}')
     
-    def tcpConnect(self, host, port, target, size):
-        fileDirectory = self.getFileDirectory(str(host), "tcp")
+    def tcpConnect(self, host, port, target, size, multi):
+        fileDirectory = self.getFileDirectory(str(host), "tcp", multi)
         print(f'FileDirectory is : {fileDirectory}')
         host.cmd(f'iperf3 -c {target} -b {size} -p {port} -J > {fileDirectory}')
         print(f'iperf3 done on {str(host)}')

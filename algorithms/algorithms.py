@@ -36,6 +36,6 @@ class Algorithms:
         print(f"Executing udp flow for {str(host)} on {target}:{port}")
         self.algor.udpConnect(host, port, target, size)
     
-    def tcpConnect(self, host, port, target, size):
+    def tcpConnect(self, host, port, target, size, multi=False):
         print(f"Executing tcp flow for {str(host)} on {target}:{port}")
-        self.algor.tcpConnect(host, port, target, size)
+        self.algor.tcpConnect(host, port, target, size, multi)

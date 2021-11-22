@@ -5,6 +5,7 @@ from .red import RED
 from .htb import HTB
 from .codel import CODEL
 from .cbq import CBQ
+from .cake import CAKE
 
 class Algorithms:
     def __init__(self, name, subAlgor='pfifo'):
@@ -24,6 +25,8 @@ class Algorithms:
             elif name == 'cbq':
                 print(f"Current subalgor is {subAlgor}")
                 self.algor = CBQ(subAlgor)
+	    elif name == 'cake':
+                self.algor = CAKE()
         except:
             print("Algorithm not implemented")
 

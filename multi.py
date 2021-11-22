@@ -145,10 +145,10 @@ def main():
     algorithm = Algorithms(sys.argv[1])
     algorithm.router_command(r1, "r1-eth6")
     algorithm2 = Algorithms(sys.argv[2])
-    algorithm2.router_command(r2, "r2-eth2")
+    algorithm2.router_command(r2, "r2-eth1")
     algorithm2.router_command(r2, "r2-eth3")
     algorithm3 = Algorithms(sys.argv[3])
-    algorithm3.router_command(r3, "r3-eth2")
+    algorithm3.router_command(r3, "r3-eth1")
 
     ##==============================================================================
     ## Ensure the hosts run iperf run on the same time

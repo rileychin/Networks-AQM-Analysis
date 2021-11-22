@@ -2,6 +2,7 @@ from .sfb_2 import SFB
 from .ets_2 import ETS
 from .red_2 import RED
 from .codel_2 import CODEL
+from .cake_2 import CAKE
 
 class Algorithms:
     def __init__(self, name):
@@ -14,6 +15,8 @@ class Algorithms:
                 self.algor = RED()
             elif name == "codel":
                 self.algor = CODEL()
+	    elif name == "cake":
+                self.algor = CAKE()
         except:
             print("Algorithm not implemented")
 

@@ -1,6 +1,6 @@
 ## Networks-AQM-Analysis
 
-For 50.012 Networks 2021 project about AQM analysis
+Active Queue Management analysis of various linux AQM. 
 
 # Note
 1. topo.py is for python 3.8.0 above
